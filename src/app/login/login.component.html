@@ -1,0 +1,47 @@
+<div class="container flex align-items-center justify-content-center">
+  <div class="cadastro">
+    <h1 class="font-bold-32-title">Health Jobs</h1>
+
+    <p class="font-bold-24-white">Não possui conta?</p>
+    <button
+      class="button-light"
+      pButton
+      type="button"
+      label="Cadastre-se"
+    ></button>
+  </div>
+
+  <div class="login">
+    <h1>Login</h1>
+
+    <div class="form margin-top">
+      <form class="flex flex-wrap justify-content-center">
+        <div>
+          <div>
+            <label for="email">Email</label>
+          </div>
+          <div>
+            <input class="input" type="text" id="email" pInputText />
+          </div>
+        </div>
+
+        <div>
+          <div class="margin-top">
+            <label for="senha">Senha</label>
+          </div>
+          <div>
+            <p-password [toggleMask]="true" id="senha"></p-password>
+          </div>
+          <div>
+            <button
+              class="button-green"
+              pButton
+              type="button"
+              label="Acessar"
+            ></button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
