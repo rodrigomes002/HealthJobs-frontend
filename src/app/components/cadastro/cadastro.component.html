@@ -22,7 +22,14 @@
             <label for="email">Email</label>
           </div>
           <div>
-            <input class="input" type="text" id="email" pInputText />
+            <input
+              [(ngModel)]="usuarioform.email"
+              name="email"
+              class="input"
+              type="text"
+              id="email"
+              pInputText
+            />
           </div>
         </div>
 
@@ -31,14 +38,20 @@
             <label for="senha">Senha</label>
           </div>
           <div>
-            <p-password [toggleMask]="true" id="senha"></p-password>
+            <p-password
+              [(ngModel)]="usuarioform.senha"
+              [feedback]="false"
+              [toggleMask]="true"
+              inputId="senha"
+              name="senha"
+            ></p-password>
           </div>
           <div class="margin-top">
             <p-radioButton
               name="tipo"
               value="Profissional"
               inputId="profissional"
-              [(ngModel)]="tipo"
+              [(ngModel)]="usuarioform.tipo"
             ></p-radioButton>
             <label class="margin-right margin-left" for="profissional"
               >Profissional</label
@@ -48,7 +61,7 @@
               name="tipo"
               value="Empresa"
               inputId="empresa"
-              [(ngModel)]="tipo"
+              [(ngModel)]="usuarioform.tipo"
             ></p-radioButton>
             <label class="margin-right margin-left" for="empresa"
               >Empresa</label
@@ -57,6 +70,7 @@
 
           <div>
             <button
+              (click)="cadastrar()"
               class="button-green"
               pButton
               type="button"

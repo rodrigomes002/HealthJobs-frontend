@@ -22,7 +22,14 @@
             <label for="email">Email</label>
           </div>
           <div>
-            <input class="input" type="text" id="email" pInputText />
+            <input
+              [(ngModel)]="usuarioform.email"
+              class="input"
+              type="text"
+              id="email"
+              name="email"
+              pInputText
+            />
           </div>
         </div>
 
@@ -31,10 +38,17 @@
             <label for="senha">Senha</label>
           </div>
           <div>
-            <p-password [toggleMask]="true" id="senha"></p-password>
+            <p-password
+              [(ngModel)]="usuarioform.senha"
+              [feedback]="false"
+              [toggleMask]="true"
+              inputId="senha"
+              name="senha"
+            ></p-password>
           </div>
           <div>
             <button
+              (click)="login()"
               class="button-green"
               pButton
               type="button"
