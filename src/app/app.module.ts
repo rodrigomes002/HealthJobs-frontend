@@ -1,3 +1,5 @@
+import { AuthService } from './services/auth.service';
+import { MessageService } from 'primeng/api';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -7,15 +9,22 @@ import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { PasswordModule } from 'primeng/password';
 import { RadioButtonModule } from 'primeng/radiobutton';
-
+import { ToastModule } from 'primeng/toast';
 import { LoginComponent } from './components/login/login.component';
 import { CadastroComponent } from './components/cadastro/cadastro.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { VagaComponent } from './components/vaga/vaga.component';
+import { AuthGuard } from './guards/auth.guard';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, CadastroComponent],
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    CadastroComponent,
+    VagaComponent,
+  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -27,8 +36,9 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
+    ToastModule,
   ],
-  providers: [],
+  providers: [MessageService, AuthService, AuthGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

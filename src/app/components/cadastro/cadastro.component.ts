@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Usuario } from 'src/app/models/usuario';
 import { UsuarioService } from 'src/app/services/usuario.service';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-cadastro',
   templateUrl: './cadastro.component.html',
   styleUrls: ['./cadastro.component.scss'],
+  providers: [MessageService],
 })
 export class CadastroComponent implements OnInit {
   usuarioform: Usuario = {
@@ -15,7 +17,13 @@ export class CadastroComponent implements OnInit {
     senha: '',
   };
 
-  constructor(private service: UsuarioService) {}
+  errorMessage!: string;
+
+  constructor(
+    private service: UsuarioService,
+    private router: Router,
+    private messageService: MessageService
+  ) {}
 
   ngOnInit(): void {}
 
@@ -31,7 +39,43 @@ export class CadastroComponent implements OnInit {
       usuario.email = this.usuarioform.email;
       usuario.senha = this.usuarioform.senha;
       usuario.tipo = this.usuarioform.tipo;
-      this.service.cadastrar(usuario).subscribe(() => {});
+      this.service.cadastrar(usuario).subscribe(
+        (response) => {
+          this.sucesso();
+
+          setTimeout(() => {
+            this.router.navigateByUrl('/login');
+          }, 1500);
+        },
+        (error) => {
+          let errorMessage = JSON.stringify(
+            error.error.split('\r')[0].split(': ')[1]
+          );
+          let erro = errorMessage.replace('"', '').replace('"', '');
+          this.errorMessage = erro;
+          this.erro();
+        }
+      );
     }
+  }
+
+  sucesso() {
+    this.messageService.add({
+      severity: 'success',
+      summary: 'Sucesso',
+      detail: 'Cadastro realizado com sucesso',
+    });
+  }
+
+  erro() {
+    this.messageService.add({
+      severity: 'error',
+      summary: 'Erro',
+      detail: this.errorMessage,
+    });
+  }
+
+  clear() {
+    this.messageService.clear();
   }
 }
