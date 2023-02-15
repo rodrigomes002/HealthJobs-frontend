@@ -16,7 +16,7 @@
     <h1>Login</h1>
 
     <div class="form margin-top">
-      <form class="flex flex-wrap justify-content-center">
+      <form #loginForm="ngForm" class="flex flex-wrap justify-content-center">
         <div>
           <div>
             <label for="email">Email</label>
@@ -29,6 +29,7 @@
               id="email"
               name="email"
               pInputText
+              required
             />
           </div>
         </div>
@@ -44,10 +45,12 @@
               [toggleMask]="true"
               inputId="senha"
               name="senha"
+              required
             ></p-password>
           </div>
           <div>
             <button
+              [disabled]="loginForm.invalid"
               (click)="login()"
               class="button-green"
               pButton

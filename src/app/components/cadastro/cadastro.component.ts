@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Usuario } from 'src/app/models/usuario';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { MessageService } from 'primeng/api';
+import { NotificacaoService } from 'src/app/services/notificacao.service';
 
 @Component({
   selector: 'app-cadastro',
@@ -22,7 +23,7 @@ export class CadastroComponent implements OnInit {
   constructor(
     private service: UsuarioService,
     private router: Router,
-    private messageService: MessageService
+    private notificacaoService: NotificacaoService
   ) {}
 
   ngOnInit(): void {}
@@ -41,41 +42,18 @@ export class CadastroComponent implements OnInit {
       usuario.tipo = this.usuarioform.tipo;
       this.service.cadastrar(usuario).subscribe(
         (response) => {
-          this.sucesso();
+          this.notificacaoService.success('Usuário cadastrado com sucesso');
 
           setTimeout(() => {
             this.router.navigateByUrl('/login');
           }, 1500);
         },
         (error) => {
-          let errorMessage = JSON.stringify(
-            error.error.split('\r')[0].split(': ')[1]
+          this.notificacaoService.error(
+            'Já existe um usuário com este email cadastrado'
           );
-          let erro = errorMessage.replace('"', '').replace('"', '');
-          this.errorMessage = erro;
-          this.erro();
         }
       );
     }
-  }
-
-  sucesso() {
-    this.messageService.add({
-      severity: 'success',
-      summary: 'Sucesso',
-      detail: 'Cadastro realizado com sucesso',
-    });
-  }
-
-  erro() {
-    this.messageService.add({
-      severity: 'error',
-      summary: 'Erro',
-      detail: this.errorMessage,
-    });
-  }
-
-  clear() {
-    this.messageService.clear();
   }
 }

@@ -1,5 +1,3 @@
-<p-toast position="top-right"></p-toast>
-
 <div class="container flex align-items-center justify-content-center">
   <div class="cadastro">
     <h1 class="font-bold-32-title">Health Jobs</h1>
@@ -18,7 +16,7 @@
     <h1>Cadastre-se</h1>
 
     <div class="form margin-top">
-      <form class="flex flex-wrap justify-content-center">
+      <form #loginForm="ngForm" class="flex flex-wrap justify-content-center">
         <div>
           <div>
             <label for="email">Email</label>
@@ -26,6 +24,7 @@
           <div>
             <input
               [(ngModel)]="usuarioform.email"
+              required
               name="email"
               class="input"
               type="text"
@@ -41,6 +40,7 @@
           </div>
           <div>
             <p-password
+              required
               [(ngModel)]="usuarioform.senha"
               [feedback]="false"
               [toggleMask]="true"
@@ -50,10 +50,12 @@
           </div>
           <div class="margin-top">
             <p-radioButton
+              required
               name="tipo"
               value="Profissional"
               inputId="profissional"
               [(ngModel)]="usuarioform.tipo"
+              required
             ></p-radioButton>
             <label class="margin-right margin-left" for="profissional"
               >Profissional</label
@@ -72,6 +74,7 @@
 
           <div>
             <button
+              [disabled]="loginForm.invalid"
               (click)="cadastrar()"
               class="button-green"
               pButton

@@ -1,4 +1,3 @@
-import { AuthService } from 'src/app/services/auth.service';
 import {
   HttpErrorResponse,
   HttpHandler,
