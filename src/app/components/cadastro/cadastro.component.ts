@@ -4,6 +4,7 @@ import { Usuario } from 'src/app/models/usuario';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { MessageService } from 'primeng/api';
 import { NotificacaoService } from 'src/app/services/notificacao.service';
+import { UsuarioToken } from 'src/app/models/usuarioToken';
 
 @Component({
   selector: 'app-cadastro',
@@ -27,9 +28,6 @@ export class CadastroComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {}
-
-  ngOnChanges(): void {}
-
   cadastrar() {
     if (
       this.usuarioform.email &&
@@ -45,13 +43,19 @@ export class CadastroComponent implements OnInit {
           this.notificacaoService.success('Usuário cadastrado com sucesso');
 
           setTimeout(() => {
-            this.router.navigateByUrl('/login');
+            let usuario = response as UsuarioToken;
+
+            if (usuario.authenticated) {
+              this.service.setToken(usuario.token);
+              this.router.navigateByUrl('/vagas');
+            }
           }, 1500);
         },
-        (error) => {
-          this.notificacaoService.error(
-            'Já existe um usuário com este email cadastrado'
-          );
+        (errors) => {
+          errors.forEach((error: any) => {
+            let mensagem = JSON.stringify(error.description);
+            this.notificacaoService.error(mensagem);
+          });
         }
       );
     }

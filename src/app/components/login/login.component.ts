@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Login } from 'src/app/models/login';
 import { UsuarioToken } from 'src/app/models/usuarioToken';
 import { UsuarioService } from 'src/app/services/usuario.service';
-import { AuthService } from 'src/app/services/auth.service';
+import { NotificacaoService } from 'src/app/services/notificacao.service';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private service: UsuarioService,
-    private authService: AuthService,
+    private notificacaoService: NotificacaoService,
     private router: Router
   ) {}
 
@@ -29,11 +29,19 @@ export class LoginComponent implements OnInit {
       usuario.email = this.usuarioform.email;
       usuario.senha = this.usuarioform.senha;
 
-      this.service.login(usuario).subscribe((response) => {
-        let usuario = response as UsuarioToken;
-        this.service.setToken(usuario.token);
-        this.authService.fazerLogin(usuario);
-      });
+      this.service.login(usuario).subscribe(
+        (response) => {
+          let usuario = response as UsuarioToken;
+
+          if (usuario.authenticated) {
+            this.service.setToken(usuario.token);
+            this.router.navigateByUrl('/vagas');
+          }
+        },
+        (errors) => {
+          this.notificacaoService.error('Usuário ou senha inválidos');
+        }
+      );
     }
   }
 }

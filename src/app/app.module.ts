@@ -1,4 +1,3 @@
-import { AuthService } from './services/auth.service';
 import { MessageService } from 'primeng/api';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -41,7 +40,6 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
   ],
   providers: [
     MessageService,
-    AuthService,
     AuthGuard,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
   ],
