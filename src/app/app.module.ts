@@ -14,17 +14,12 @@ import { CadastroComponent } from './components/cadastro/cadastro.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { VagaComponent } from './components/vaga/vaga.component';
+import { VagaPage } from './pages/vaga/vaga.page';
 import { AuthGuard } from './services/guards/auth.guard';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    LoginComponent,
-    CadastroComponent,
-    VagaComponent,
-  ],
+  declarations: [AppComponent, LoginComponent, CadastroComponent, VagaPage],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

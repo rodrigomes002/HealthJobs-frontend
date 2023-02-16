@@ -4,13 +4,25 @@ import { Usuario } from '../models/usuario';
 import { Login } from '../models/login';
 import jwtDecode from 'jwt-decode';
 import { Router } from '@angular/router';
+import { BehaviorSubject, Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
 export class UsuarioService {
   private url = 'https://localhost:7260/api/usuario';
+  private currentUserSubject = new BehaviorSubject<any>(null);
+  public currentUser = new Observable<Usuario>();
+  constructor(private http: HttpClient, private router: Router) {
+    const token = this.getToken();
 
-  constructor(private http: HttpClient, private router: Router) {}
+    if (token) {
+      this.currentUserSubject = new BehaviorSubject<Usuario>(
+        this.parseUsuarioJwtParaUsuario(token)
+      );
+
+      this.currentUser = this.currentUserSubject.asObservable();
+    }
+  }
 
   cadastrar(usuario: Usuario) {
     return this.http.post(`${this.url}/cadastrar`, usuario);
@@ -23,6 +35,15 @@ export class UsuarioService {
   logout() {
     localStorage.removeItem('access_token');
     this.router.navigate(['/login']);
+  }
+
+  parseUsuarioJwtParaUsuario(token: string): Usuario {
+    const decoded: any = jwtDecode(token);
+    let usuario = new Usuario();
+    usuario.email = decoded.unique_name;
+    usuario.tipo = decoded.role;
+
+    return usuario;
   }
 
   setToken(token: string) {

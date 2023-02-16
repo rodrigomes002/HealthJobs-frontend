@@ -1,0 +1,6 @@
+<button *ngIf="isPerfil('Profissional')" (click)="logout()">
+  Logout Profissional
+</button>
+<button *ngIf="isPerfil('Empresa')" (click)="logout()">Logout Empresa</button>
+
+<p>Seja bem vindo: {{usuarioLogado()}}</p>

@@ -3,7 +3,7 @@ import { CadastroComponent } from './components/cadastro/cadastro.component';
 import { LoginComponent } from './components/login/login.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { VagaComponent } from './components/vaga/vaga.component';
+import { VagaPage } from './pages/vaga/vaga.page';
 
 const routes: Routes = [
   {
@@ -20,7 +20,7 @@ const routes: Routes = [
   },
   {
     path: 'vagas',
-    component: VagaComponent,
+    component: VagaPage,
     canActivate: [AuthGuard],
   },
 ];
