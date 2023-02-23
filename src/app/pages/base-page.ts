@@ -13,6 +13,10 @@ export class BasePage {
   }
 
   usuarioLogado() {
-    return this.usuario.email;
+    return this.usuario.email.split('@')[0];
+  }
+
+  isLogado() {
+    return this.usuarioService.usuarioLogado();
   }
 }

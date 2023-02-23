@@ -1,3 +1,4 @@
+import { PostarComponent } from './pages/vaga/postar/postar.component';
 import { AuthGuard } from './services/guards/auth.guard';
 import { CadastroComponent } from './components/cadastro/cadastro.component';
 import { LoginComponent } from './components/login/login.component';
@@ -21,6 +22,11 @@ const routes: Routes = [
   {
     path: 'vagas',
     component: VagaPage,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'vagas/postar',
+    component: PostarComponent,
     canActivate: [AuthGuard],
   },
 ];

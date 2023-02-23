@@ -17,9 +17,18 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { VagaPage } from './pages/vaga/vaga.page';
 import { AuthGuard } from './services/guards/auth.guard';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { MultiSelectModule } from 'primeng/multiselect';
+import { PostarComponent } from './pages/vaga/postar/postar.component';
+import { InputTextareaModule } from 'primeng/inputtextarea';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, CadastroComponent, VagaPage],
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    CadastroComponent,
+    VagaPage,
+    PostarComponent,
+  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -32,6 +41,8 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
     FormsModule,
     HttpClientModule,
     ToastModule,
+    MultiSelectModule,
+    InputTextareaModule,
   ],
   providers: [
     MessageService,

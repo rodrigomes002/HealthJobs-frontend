@@ -1,0 +1,69 @@
+<div class="flex align-items-center justify-content-between menu">
+  <h1>HEALT JOBS</h1>
+
+  <div class="flex align-items-center gap-4">
+    <div class="flex gap-3">
+      <button
+        class="button-green"
+        pButton
+        type="button"
+        label="VAGAS"
+        routerLink="/vagas"
+      ></button>
+    </div>
+  </div>
+</div>
+
+<div class="form">
+  <form #vagaForm="ngForm" class="flex flex-wrap">
+    <div class="flex align-items-center justify-content-center">
+      <label for="empresa">Empresa</label>
+      <input
+        required
+        name="empresa"
+        class="input"
+        type="text"
+        id="empresa"
+        pInputText
+      />
+    </div>
+
+    <div class="flex align-items-center justify-content-center">
+      <label for="cargo">Cargo</label>
+      <input
+        required
+        name="cargo"
+        class="input"
+        type="text"
+        id="cargo"
+        pInputText
+      />
+    </div>
+
+    <div class="flex align-items-center justify-content-center">
+      <label for="salario">Salário</label>
+      <input
+        required
+        name="salario"
+        class="input"
+        type="text"
+        id="salario"
+        pInputText
+      />
+    </div>
+
+    <div class="flex align-items-center justify-content-center">
+      <label for="descricao">Descrição</label>
+      <textarea pInputTextarea></textarea>
+    </div>
+    <div>
+      <button
+        [disabled]="vagaForm.invalid"
+        class="button-green"
+        pButton
+        type="button"
+        label="POSTAR"
+      ></button>
+    </div>
+  </form>
+</div>
