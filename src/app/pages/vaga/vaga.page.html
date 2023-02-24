@@ -1,110 +1,111 @@
-<div class="flex align-items-center justify-content-between menu">
-  <h1>HEALT JOBS</h1>
+<header class="header">
+  <h1>HEALTH JOBS</h1>
+  <nav>
+    <ul class="header-menu">
+      <li><a href="">Ver vagas</a></li>
+      <li><a href="">Postar</a></li>
+    </ul>
+  </nav>
+</header>
 
-  <div class="flex align-items-center gap-4">
-    <div>
-      <a href="" routerLink="/vagas" class="vermais">VER VAGAS</a>
-    </div>
-    <div>
-      <a
-        href=""
-        *ngIf="isPerfil('Empresa')"
-        routerLink="/vagas/postar"
-        class="vermais"
-        >POSTAR VAGA</a
-      >
-    </div>
-    <div class="logado flex gap-3" *ngIf="isLogado()">
-      <p>{{usuarioLogado()}}</p>
+<main class="introducao-bg">
+  <div class="introducao">
+    <p>
+      As melhores vagas para <br />
+      profissionais da área da saúde
+    </p>
+  </div>
+</main>
+
+<div class="container">
+  <div class="template-areas">
+    <div class="quantidade"><strong>239 vagas</strong> disponíveis</div>
+    <div class="ordenar">
       <button
-        class="button-green"
+        class="button-white"
         pButton
         type="button"
-        label="Sair"
-        routerLink="/login"
-        (click)="logout()"
+        label="Ordenar"
       ></button>
     </div>
-  </div>
-</div>
-
-<div class="banner">
-  <div class="texto">
-    <p>As melhores vagas para profissionais da área da saúde.</p>
-  </div>
-</div>
-
-<div class="flex gap-4">
-  <div class="vagas">
-    <div class="flex align-items-center justify-content-between">
-      <div>
-        <p>239 vagas disponíveis</p>
-      </div>
-      <div>
-        <button
-          class="button-white"
-          pButton
-          type="button"
-          label="Ordenar"
-        ></button>
-      </div>
+    <div class="form">
+      <form>
+        <h2>Filtre sua busca</h2>
+        <div>
+          <label for="especialidade">Especialidade</label>
+          <p-multiSelect
+            name="especialidade"
+            id="especialidade"
+            optionLabel="especialidade"
+            [options]="especialidades"
+            [(ngModel)]="especialidadeSelecionada"
+          ></p-multiSelect>
+        </div>
+        <div>
+          <label for="local">Local</label>
+          <p-multiSelect
+            name="local"
+            id="local"
+            optionLabel="local"
+            [options]="locais"
+            [(ngModel)]="localSelecionado"
+          ></p-multiSelect>
+        </div>
+        <div>
+          <button
+            class="button-green"
+            pButton
+            type="button"
+            label="Buscar"
+          ></button>
+        </div>
+      </form>
     </div>
 
     <div class="vaga">
-      <p><strong>Fisioterapeuta</strong></p>
-      <p>Rio de Janeiro</p>
-      <p>R$ 3.001 a R$ 4.000 por mês - Tempo integral</p>
-      <p>
-        Realizar diagnóstico e prognóstico fisioterapêutico, e tratamento dos
-        distúrbios cinéticos funcionais de ordem neurológica, motora ou
-        respiratória, visando o restabelecimento parcial ou completo da função.
-      </p>
-
-      <button
-        class="button-green"
-        pButton
-        type="button"
-        label="CANDIDATAR-SE"
-      ></button>
-    </div>
-  </div>
-
-  <div class="filtro">
-    <p>Filtre sua busca</p>
-    <div class="margin-top">
-      <label for="especialidade">Especialidade</label>
-      <p-multiSelect
-        name="especialidade"
-        id="especialidade"
-        optionLabel="especialidade"
-        [options]="especialidades"
-        [(ngModel)]="especialidadeSelecionada"
-      ></p-multiSelect>
-    </div>
-    <div class="margin-top">
-      <label for="local">Local</label>
-      <p-multiSelect
-        name="local"
-        id="local"
-        optionLabel="local"
-        [options]="locais"
-        [(ngModel)]="localSelecionado"
-      ></p-multiSelect>
-    </div>
-    <div class="margin-top">
-      <button
-        class="button-green"
-        pButton
-        type="button"
-        label="Buscar"
-      ></button>
+      <div class="vaga-bg">
+        <div class="texto">
+          <p><strong>Fisioterapeuta</strong></p>
+          <p>Rio de Janeiro</p>
+          <p>R$ 3.001 a R$ 4.000 por mês - Tempo integral</p>
+          <p>
+            Realizar diagnóstico e prognóstico fisioterapêutico, e tratamento
+            dos distúrbios cinéticos funcionais de ordem neurológica, motora ou
+            respiratória, visando o restabelecimento parcial ou completo da
+            função.
+          </p>
+          <button
+            class="button-green"
+            pButton
+            type="button"
+            label="CANDIDATAR-SE"
+          ></button>
+        </div>
+      </div>
     </div>
   </div>
 </div>
 
-<div class="footer">
-  <p>© 2022 - 2022 | HEALTH JOBS. Todos os direitos reservados.</p>
-</div>
+<footer class="footer-bg">
+  <div class="footer">
+    <div>
+      <p>HEALTH JOBS</p>
+      <p>+55(21) 0000-0000</p>
+      <p>Rua. Algum lugar 201, <br />Rio de Janeiro - RJ <br />00000-000.</p>
+    </div>
+    <div>
+      <p>PARA PROFISSIONAIS DA SAÚDE</p>
+      <p>Médicos</p>
+      <p>Fisioterapeutas</p>
+      <p>Terapeutas ocupacionais</p>
+      <p>Enfermeiros</p>
+    </div>
+  </div>
+  <div class="direitos">
+    <p>© 2022 - 2022 VAGAS | HEALTH. Todos os direitos reservados.</p>
+  </div>
+</footer>
+
 <!--
 <button *ngIf="isPerfil('Profissional')" (click)="logout()">
   Logout Profissional

@@ -6,39 +6,120 @@ $light-color: #f9f8f6;
 $green-light-color: #5ce2a9;
 
 $font-16: 16px;
+$font-18: 18px;
 $font-24: 24px;
 $font-32: 32px;
 
-.logado {
-  margin-right: 30px;
+.header {
+  max-width: 1200px;
+  padding: 20px 20px;
+  margin: 0 auto;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.menu {
-  height: 101px;
+.header-menu {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
 }
 
-h1 {
-  font-size: $font-24;
-  margin-left: 30px;
+.header-menu li a {
+  color: $green-color;
+  font-size: $font-18;
+  text-transform: uppercase;
+  font-weight: 500;
 }
 
-.vermais {
-  font-size: $font-16;
-  text-decoration: none;
-  color: $black-color;
+.introducao {
+  max-width: 1200px;
+  padding: 40px 20px;
+  margin: 0 auto;
 }
 
-.banner {
-  background-color: #3d3d3d;
-  height: 268px;
+.introducao-bg {
+  background: #3d3d3d;
+}
+
+.introducao p {
+  color: #fff;
+  text-align: center;
+  font-size: 38px;
+  font-weight: bold;
+}
+
+.vaga {
+  grid-area: vaga;
+  margin: 20px;
+}
+
+.vaga-bg {
+  background-color: #fff;
+  padding: 20px;
 }
 
 .texto {
-  padding-top: 30px;
-  font-size: 38px;
-  font-weight: 400;
-  color: #f5f5f5;
-  text-align: center;
+  padding: 20px;
+}
+
+.texto p {
+  padding: 5px;
+}
+
+.quantidade {
+  padding-left: 20px;
+  grid-area: quantidade;
+}
+
+.quantidade strong {
+  color: $green-color;
+}
+
+.form {
+  background-color: #fff;
+  height: 474px;
+  grid-area: filtro;
+  width: 274px;
+}
+
+.template-areas {
+  display: grid;
+  grid-template-areas:
+    "quantidade ordenar filtro"
+    "vaga vaga filtro";
+}
+
+.ordenar {
+  text-align: end;
+  grid-area: ordenar;
+  margin-right: 20px;
+}
+
+.footer {
+  max-width: 1200px;
+  height: 300px;
+  padding: 20px 20px;
+  margin: 0 auto;
+  font-size: 12px;
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+}
+
+.footer-bg {
+  background-color: #3d3d3d;
+  color: #fff;
+}
+
+.footer div p {
+  margin-top: 20px;
+}
+
+.direitos {
+  border-top: 0.5px solid #f5f5f5;
+  padding: 20px 0;
 }
 
 .button-green {
@@ -62,30 +143,4 @@ h1 {
 .button-white:hover {
   background-color: $white-color;
   color: $black-color;
-}
-
-.vagas {
-  margin: 30px 0 0 30px;
-  background-color: $light-color;
-}
-
-.vaga {
-  margin-top: 30px;
-  padding: 30px;
-  background-color: $white-color;
-}
-
-.filtro {
-  margin: 30px 30px 0 0;
-  padding: 10px 30px;
-  background-color: $white-color;
-}
-
-.filtro p {
-  font-size: $font-24;
-  font-weight: bold;
-}
-
-.margin-top {
-  margin-top: 20px;
 }
