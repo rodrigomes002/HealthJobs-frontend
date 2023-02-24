@@ -2,8 +2,8 @@
   <h1>HEALTH JOBS</h1>
   <nav>
     <ul class="header-menu">
-      <li><a href="">Ver vagas</a></li>
-      <li><a href="">Postar</a></li>
+      <li><a routerLink="vagas">Ver vagas</a></li>
+      <li><a routerLink="postar">Postar</a></li>
     </ul>
   </nav>
 </header>
@@ -20,6 +20,7 @@
 <div class="container">
   <div class="template-areas">
     <div class="quantidade"><strong>239 vagas</strong> disponíveis</div>
+
     <div class="ordenar">
       <button
         class="button-white"
@@ -28,11 +29,12 @@
         label="Ordenar"
       ></button>
     </div>
-    <div class="form">
+
+    <div class="form border-radius">
       <form>
         <h2>Filtre sua busca</h2>
         <div>
-          <div class="margin-20">
+          <div class="margin-top30">
             <label for="especialidade">Especialidade</label>
           </div>
           <div class="width-225">
@@ -46,7 +48,7 @@
           </div>
         </div>
         <div>
-          <div class="margin-20">
+          <div class="margin-top20">
             <label for="local">Local</label>
           </div>
           <div class="width-225">
@@ -59,7 +61,7 @@
             ></p-multiSelect>
           </div>
         </div>
-        <div>
+        <div class="margin-top20">
           <button
             class="button-green"
             pButton
@@ -71,7 +73,7 @@
     </div>
 
     <div class="vaga">
-      <div class="vaga-bg">
+      <div class="vaga-bg border-radius">
         <div class="texto">
           <p><strong>Fisioterapeuta</strong></p>
           <p>Rio de Janeiro</p>
@@ -82,12 +84,14 @@
             respiratória, visando o restabelecimento parcial ou completo da
             função.
           </p>
-          <button
-            class="button-green"
-            pButton
-            type="button"
-            label="CANDIDATAR-SE"
-          ></button>
+          <div class="margin-top20">
+            <button
+              class="button-green"
+              pButton
+              type="button"
+              label="CANDIDATAR-SE"
+            ></button>
+          </div>
         </div>
       </div>
     </div>
