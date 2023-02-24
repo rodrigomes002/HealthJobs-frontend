@@ -32,24 +32,32 @@
       <form>
         <h2>Filtre sua busca</h2>
         <div>
-          <label for="especialidade">Especialidade</label>
-          <p-multiSelect
-            name="especialidade"
-            id="especialidade"
-            optionLabel="especialidade"
-            [options]="especialidades"
-            [(ngModel)]="especialidadeSelecionada"
-          ></p-multiSelect>
+          <div class="margin-20">
+            <label for="especialidade">Especialidade</label>
+          </div>
+          <div class="width-225">
+            <p-multiSelect
+              name="especialidade"
+              id="especialidade"
+              optionLabel="especialidade"
+              [options]="especialidades"
+              [(ngModel)]="especialidadeSelecionada"
+            ></p-multiSelect>
+          </div>
         </div>
         <div>
-          <label for="local">Local</label>
-          <p-multiSelect
-            name="local"
-            id="local"
-            optionLabel="local"
-            [options]="locais"
-            [(ngModel)]="localSelecionado"
-          ></p-multiSelect>
+          <div class="margin-20">
+            <label for="local">Local</label>
+          </div>
+          <div class="width-225">
+            <p-multiSelect
+              name="local"
+              id="local"
+              optionLabel="local"
+              [options]="locais"
+              [(ngModel)]="localSelecionado"
+            ></p-multiSelect>
+          </div>
         </div>
         <div>
           <button
