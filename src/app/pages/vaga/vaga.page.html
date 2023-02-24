@@ -3,7 +3,8 @@
   <nav>
     <ul class="header-menu">
       <li><a routerLink="vagas">Ver vagas</a></li>
-      <li><a routerLink="postar">Postar</a></li>
+      <li *ngIf="isPerfil('Empresa')"><a routerLink="postar">Postar</a></li>
+      <li><a routerLink="/login">Sair</a></li>
     </ul>
   </nav>
 </header>
@@ -117,11 +118,3 @@
     <p>© 2022 - 2022 VAGAS | HEALTH. Todos os direitos reservados.</p>
   </div>
 </footer>
-
-<!--
-<button *ngIf="isPerfil('Profissional')" (click)="logout()">
-  Logout Profissional
-</button>
-<button *ngIf="isPerfil('Empresa')" (click)="logout()">Logout Empresa</button>
-
-<p>Seja bem vindo: {{usuarioLogado()}}</p> -->
