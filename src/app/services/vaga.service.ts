@@ -1,3 +1,4 @@
+import { Candidatura } from './../models/candidatura';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -21,5 +22,9 @@ export class VagaService {
 
   listarFiltros(): Observable<Filtros> {
     return this.http.get<Filtros>(`${this.url}/filtros`);
+  }
+
+  candidatarSe(candidatura: Candidatura) {
+    return this.http.post(`${this.url}/candidatar`, candidatura);
   }
 }

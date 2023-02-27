@@ -1,3 +1,4 @@
+import { Candidatura } from './../../models/candidatura';
 import { NotificacaoService } from 'src/app/services/notificacao.service';
 import { VagaFilter } from './../../models/filter/vagaFilter';
 import { VagaService } from './../../services/vaga.service';
@@ -58,6 +59,21 @@ export class VagaPage extends BasePage implements OnInit {
       });
       this.notificacaoService.hide();
     });
+  }
+  candidatarSe(vaga: any) {
+    let candadatura = new Candidatura();
+    candadatura.id = vaga.id;
+    candadatura.candidato = this.usuario.email;
+
+    this.notificacaoService.loading();
+    this.service.candidatarSe(candadatura).subscribe(
+      (response) => {
+        this.notificacaoService.hide();
+      },
+      (error) => {
+        this.notificacaoService.hide();
+      }
+    );
   }
 
   mudarPagina(event: any) {
