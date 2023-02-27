@@ -1,6 +1,6 @@
 export class EspecialidadeFilter {
-  constructor(especialidade: string) {
-    this.especialidade = especialidade;
+  constructor(cargo: string) {
+    this.cargo = cargo;
   }
-  especialidade: string = '';
+  cargo: string;
 }

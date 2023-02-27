@@ -59,6 +59,7 @@ $font-32: 32px;
 .vaga-bg {
   background-color: #fff;
   padding: 20px;
+  margin-bottom: 20px;
 }
 
 .texto {
@@ -79,9 +80,13 @@ $font-32: 32px;
 }
 
 .form {
-  background-color: #fff;
   grid-area: filtro;
+}
+
+form {
+  background-color: #fff;
   width: 274px;
+  height: 600px;
   padding: 20px;
 }
 
@@ -149,10 +154,6 @@ h2 {
   color: $black-color;
 }
 
-.width-225 {
-  width: 225px;
-}
-
 :host ::ng-deep .p-multiselect {
   width: 220px;
   height: 40px;
@@ -160,4 +161,8 @@ h2 {
 
 label {
   font-weight: bold;
+}
+
+:host ::ng-deep .p-paginator {
+  background-color: #f9f8f6;
 }

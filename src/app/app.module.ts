@@ -20,6 +20,7 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { PostarComponent } from './pages/vaga/postar/postar.component';
 import { InputTextareaModule } from 'primeng/inputtextarea';
+import { PaginatorModule } from 'primeng/paginator';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
     ToastModule,
     MultiSelectModule,
     InputTextareaModule,
+    PaginatorModule,
   ],
   providers: [
     MessageService,

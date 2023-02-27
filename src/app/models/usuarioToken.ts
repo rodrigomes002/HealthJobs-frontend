@@ -1,6 +1,6 @@
 export class UsuarioToken {
-  authenticated!: boolean;
-  token!: string;
-  expiration!: Date;
-  message!: string;
+  authenticated: boolean;
+  token: string;
+  expiration: Date;
+  message: string;
 }

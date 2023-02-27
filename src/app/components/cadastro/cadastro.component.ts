@@ -19,7 +19,7 @@ export class CadastroComponent implements OnInit {
     senha: '',
   };
 
-  errorMessage!: string;
+  errorMessage: string;
 
   constructor(
     private service: UsuarioService,

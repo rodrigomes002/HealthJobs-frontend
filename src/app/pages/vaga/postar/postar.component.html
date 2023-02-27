@@ -15,55 +15,107 @@
 </div>
 
 <div class="form">
-  <form #vagaForm="ngForm" class="flex flex-wrap">
-    <div class="flex align-items-center justify-content-center">
-      <label for="empresa">Empresa</label>
-      <input
-        required
-        name="empresa"
-        class="input"
-        type="text"
-        id="empresa"
-        pInputText
-      />
+  <form #vgForm="ngForm">
+    <div class="padding-top30">
+      <h2>Postar vaga</h2>
     </div>
 
-    <div class="flex align-items-center justify-content-center">
-      <label for="cargo">Cargo</label>
-      <input
-        required
-        name="cargo"
-        class="input"
-        type="text"
-        id="cargo"
-        pInputText
-      />
-    </div>
+    <div class="flex flex-wrap justify-content-center">
+      <div>
+        <div class="margin-top30">
+          <label for="empresa">Empresa</label>
+        </div>
+        <div class="width-300">
+          <input
+            [(ngModel)]="vagaForm.empresa"
+            required
+            name="empresa"
+            class="input"
+            type="text"
+            id="empresa"
+            pInputText
+          />
+        </div>
+      </div>
 
-    <div class="flex align-items-center justify-content-center">
-      <label for="salario">Salário</label>
-      <input
-        required
-        name="salario"
-        class="input"
-        type="text"
-        id="salario"
-        pInputText
-      />
-    </div>
+      <div>
+        <div class="margin-top30">
+          <label for="cargo">Cargo</label>
+        </div>
+        <div class="width-300">
+          <input
+            [(ngModel)]="vagaForm.cargo"
+            required
+            name="cargo"
+            class="input"
+            type="text"
+            id="cargo"
+            pInputText
+          />
+        </div>
+      </div>
 
-    <div class="flex align-items-center justify-content-center">
-      <label for="descricao">Descrição</label>
-      <textarea pInputTextarea></textarea>
-    </div>
-    <div>
-      <button
-        [disabled]="vagaForm.invalid"
-        class="button-green"
-        pButton
-        type="button"
-        label="POSTAR"
-      ></button>
+      <div>
+        <div class="margin-top30">
+          <label for="salario">Salário</label>
+        </div>
+        <div class="width-300">
+          <input
+            [(ngModel)]="vagaForm.salario"
+            required
+            name="salario"
+            class="input"
+            type="text"
+            id="salario"
+            pInputText
+          />
+        </div>
+      </div>
+
+      <div>
+        <div class="margin-top30">
+          <label for="local">Local</label>
+        </div>
+        <div class="width-300">
+          <input
+            [(ngModel)]="vagaForm.local"
+            required
+            name="local"
+            class="input"
+            type="text"
+            id="local"
+            pInputText
+          />
+        </div>
+      </div>
+
+      <div>
+        <div class="margin-top30">
+          <label for="descricao">Descrição</label>
+        </div>
+        <div class="width-300">
+          <textarea
+            [(ngModel)]="vagaForm.descricao"
+            pInputTextarea
+            required
+            id="descricao"
+            name="descricao"
+          ></textarea>
+        </div>
+      </div>
+
+      <div class="width-300">
+        <div class="margin-top30">
+          <button
+            [disabled]="vgForm.invalid"
+            class="button-green"
+            pButton
+            type="button"
+            label="POSTAR"
+            (click)="cadastrar()"
+          ></button>
+        </div>
+      </div>
     </div>
   </form>
 </div>
