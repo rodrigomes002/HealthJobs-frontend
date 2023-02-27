@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Filtros } from '../models/filter/filtros';
 import { CadastrarVagaDTO, Vaga } from '../models/vaga';
 
 @Injectable({
@@ -17,7 +19,7 @@ export class VagaService {
     return this.http.post(`${this.url}/vagas`, filtro);
   }
 
-  listar() {
-    return this.http.get(`${this.url}/vagas`);
+  listarFiltros(): Observable<Filtros> {
+    return this.http.get<Filtros>(`${this.url}/filtros`);
   }
 }

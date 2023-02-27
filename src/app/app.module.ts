@@ -21,6 +21,7 @@ import { MultiSelectModule } from 'primeng/multiselect';
 import { PostarComponent } from './pages/vaga/postar/postar.component';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { PaginatorModule } from 'primeng/paginator';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { PaginatorModule } from 'primeng/paginator';
     MultiSelectModule,
     InputTextareaModule,
     PaginatorModule,
+    NgxSpinnerModule,
   ],
   providers: [
     MessageService,

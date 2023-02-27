@@ -1,3 +1,4 @@
+import { NotificacaoService } from 'src/app/services/notificacao.service';
 import { VagaFilter } from './../../models/filter/vagaFilter';
 import { VagaService } from './../../services/vaga.service';
 import { BasePage } from '../base-page';
@@ -20,32 +21,46 @@ export class VagaPage extends BasePage implements OnInit {
   localSelecionado: LocalFilter[] = [];
   vagaFilter: VagaFilter = new VagaFilter();
   count: number;
-  constructor(usuarioService: UsuarioService, private service: VagaService) {
+  constructor(
+    usuarioService: UsuarioService,
+    private service: VagaService,
+    private notificacaoService: NotificacaoService
+  ) {
     super(usuarioService);
   }
 
   ngOnInit(): void {
+    this.listarFiltros();
     this.listar();
-    this.locais.push(new LocalFilter('Rio de Janeiro'));
-    this.locais.push(new LocalFilter('São Paulo'));
-    this.locais.push(new LocalFilter('Minas Gerais'));
-
-    this.cargos.push(new EspecialidadeFilter('Fisioterapeuta'));
-    this.cargos.push(new EspecialidadeFilter('Médico'));
-    this.cargos.push(new EspecialidadeFilter('Enfermeiro'));
   }
 
   listar() {
     this.vagaFilter.locais = this.localSelecionado.map((l) => l.local);
     this.vagaFilter.especialidades = this.cargoSelecionada.map((e) => e.cargo);
+    this.notificacaoService.loading();
     this.service.listarPorFiltro(this.vagaFilter).subscribe((response) => {
       let result = response as VagaResult;
       this.vagas = result.vagas;
       this.count = result.count;
+      this.notificacaoService.hide();
     });
   }
 
-  clickPagina(event: any) {
+  listarFiltros() {
+    this.notificacaoService.loading();
+    this.service.listarFiltros().subscribe((response) => {
+      response.locais.forEach((local) => {
+        this.locais.push(new LocalFilter(local));
+      });
+
+      response.cargos.forEach((cargo) => {
+        this.cargos.push(new EspecialidadeFilter(cargo));
+      });
+      this.notificacaoService.hide();
+    });
+  }
+
+  mudarPagina(event: any) {
     this.vagaFilter.page = event.page + 1;
     this.listar();
   }
