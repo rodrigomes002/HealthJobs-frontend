@@ -43,7 +43,7 @@ export class VagaPage extends BasePage implements OnInit {
       let result = response as VagaResult;
       this.vagas = result.vagas;
       this.count = result.count;
-      this.notificacaoService.hide();
+      this.notificacaoService.loaded().subscribe(() => {});
     });
   }
 
@@ -57,7 +57,7 @@ export class VagaPage extends BasePage implements OnInit {
       response.cargos.forEach((cargo) => {
         this.cargos.push(new EspecialidadeFilter(cargo));
       });
-      this.notificacaoService.hide();
+      this.notificacaoService.loaded().subscribe(() => {});
     });
   }
   candidatarSe(vaga: any) {
@@ -68,10 +68,10 @@ export class VagaPage extends BasePage implements OnInit {
     this.notificacaoService.loading();
     this.service.candidatarSe(candadatura).subscribe(
       (response) => {
-        this.notificacaoService.hide();
+        this.notificacaoService.loaded().subscribe(() => {});
       },
       (error) => {
-        this.notificacaoService.hide();
+        this.notificacaoService.loaded().subscribe(() => {});
       }
     );
   }
@@ -79,9 +79,5 @@ export class VagaPage extends BasePage implements OnInit {
   mudarPagina(event: any) {
     this.vagaFilter.page = event.page + 1;
     this.listar();
-  }
-
-  logout() {
-    this.usuarioService.logout();
   }
 }

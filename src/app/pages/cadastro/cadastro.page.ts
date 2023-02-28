@@ -5,14 +5,15 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 import { MessageService } from 'primeng/api';
 import { NotificacaoService } from 'src/app/services/notificacao.service';
 import { UsuarioToken } from 'src/app/models/usuarioToken';
+import { BasePage } from 'src/app/pages/base-page';
 
 @Component({
   selector: 'app-cadastro',
-  templateUrl: './cadastro.component.html',
-  styleUrls: ['./cadastro.component.scss'],
+  templateUrl: './cadastro.page.html',
+  styleUrls: ['./cadastro.page.scss'],
   providers: [MessageService],
 })
-export class CadastroComponent implements OnInit {
+export class CadastroPage extends BasePage implements OnInit {
   usuarioform: Usuario = {
     tipo: '',
     email: '',
@@ -22,10 +23,13 @@ export class CadastroComponent implements OnInit {
   errorMessage: string;
 
   constructor(
+    usuarioService: UsuarioService,
     private service: UsuarioService,
     private router: Router,
     private notificacaoService: NotificacaoService
-  ) {}
+  ) {
+    super(usuarioService);
+  }
 
   ngOnInit(): void {}
   cadastrar() {

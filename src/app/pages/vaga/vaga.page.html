@@ -4,7 +4,8 @@
     <ul class="header-menu">
       <li><a routerLink="vagas">Ver vagas</a></li>
       <li *ngIf="isPerfil('Empresa')"><a routerLink="postar">Postar</a></li>
-      <li><a routerLink="/login">Sair</a></li>
+      <li>{{usuario.email}}</li>
+      <li><a href="" (click)="usuarioService.logout()">Sair</a></li>
     </ul>
   </nav>
 </header>

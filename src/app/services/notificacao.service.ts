@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { MessageService } from 'primeng/api';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -33,9 +34,13 @@ export class NotificacaoService {
     this.spinner.show();
   }
 
-  hide() {
-    setTimeout(() => {
-      this.spinner.hide();
-    }, 1000);
+  loaded(message?: any): Observable<any> {
+    return Observable.create((observer: any) => {
+      setTimeout(() => {
+        this.spinner.hide();
+        observer.next();
+        observer.complete();
+      }, 1000);
+    });
   }
 }

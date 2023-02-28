@@ -1,7 +1,7 @@
 import { PostarComponent } from './pages/vaga/postar/postar.component';
 import { AuthGuard } from './services/guards/auth.guard';
-import { CadastroComponent } from './components/cadastro/cadastro.component';
-import { LoginComponent } from './components/login/login.component';
+import { CadastroPage } from './pages/cadastro/cadastro.page';
+import { LoginPage } from './pages/login/login.page';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { VagaPage } from './pages/vaga/vaga.page';
@@ -9,15 +9,15 @@ import { VagaPage } from './pages/vaga/vaga.page';
 const routes: Routes = [
   {
     path: '',
-    component: LoginComponent,
+    component: LoginPage,
   },
   {
     path: 'login',
-    component: LoginComponent,
+    component: LoginPage,
   },
   {
     path: 'cadastro',
-    component: CadastroComponent,
+    component: CadastroPage,
   },
   {
     path: 'vagas',
