@@ -42,7 +42,9 @@ export class LoginPage extends BasePage implements OnInit {
             this.service.setToken(usuario.token);
 
             this.notificacaoService.loaded().subscribe(() => {
-              this.router.navigate(['vagas']);
+              this.router.navigate(['vagas']).then(() => {
+                window.location.reload();
+              });
             });
           }
         },
