@@ -42,18 +42,23 @@ export class CadastroPage extends BasePage implements OnInit {
       usuario.email = this.usuarioform.email;
       usuario.senha = this.usuarioform.senha;
       usuario.tipo = this.usuarioform.tipo;
+
+      this.notificacaoService.loading();
       this.service.cadastrar(usuario).subscribe(
         (response) => {
           this.notificacaoService.success('Usuário cadastrado com sucesso');
 
-          setTimeout(() => {
-            let usuario = response as UsuarioToken;
+          let usuario = response as UsuarioToken;
 
-            if (usuario.authenticated) {
-              this.service.setToken(usuario.token);
-              this.router.navigateByUrl('/vagas');
-            }
-          }, 1500);
+          if (usuario.authenticated) {
+            this.service.setToken(usuario.token);
+
+            this.notificacaoService.loaded().subscribe(() => {
+              this.router.navigate(['vagas']).then(() => {
+                window.location.reload();
+              });
+            });
+          }
         },
         (errors) => {
           errors.forEach((error: any) => {
